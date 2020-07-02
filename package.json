@@ -1,0 +1,26 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt-nodejs": "*",
+    "body-parser": "*",
+    "cors": "^2.8.4",
+    "express": "*",
+    "jwt-simple": "*",
+    "mongoose": "*",
+    "morgan": "*",
+    "nodemon": "*",
+    "passport": "*",
+    "passport-http-bearer": "^1.0.1",
+    "passport-jwt": "*",
+    "passport-local": "*"
+  }
+}
