@@ -6,6 +6,7 @@ const morgan = require('morgan');
 const app = express();
 const router = require('./router');
 const cors = require('cors');
+const passport = require('./services/passport')
 
 
 // App Setup
