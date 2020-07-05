@@ -29,7 +29,25 @@ exports.putShow = (req, res, next) => {
     let newShowList = showlist.slice()
     newShowList[id - 1] = newShow;
     showlist = newShowList;
-    return res.send(newShow);
+    return res.status(202).send(newShow);
+}
+
+exports.patchShow = (req, res, next) => {
+    const id = req.param("id");
+    const oldShow = showlist.filter(show => show.id == id ).pop();
+    const newShow = req.body;
+    if (!id||!oldShow){
+        return res.status(404).send({erro:"Show não encontrato"});
+    }
+    for(let props in newShow){
+        oldShow[props] = newShow[props];
+    }
+    let newShowList = showlist.slice();
+    newShowList[id-1] = oldShow;
+    showlist = newShowList;
+    return res.status(202).send(oldShow);
+
+
 }
 
 exports.getShow = (req, res, next) => {
@@ -53,5 +71,15 @@ exports.getShow = (req, res, next) => {
             return res.status(404).send({erro: "Show não encontrado"});
         }
         return res.send(show)
+    }
+}
+
+exports.deleteShow = (req,res,next) => {
+    const id = req.param("id");
+    if (showlist.some(show => show.id == id)){
+        showlist = showlist.filter((show => show.id != id));
+        return res.status(204).send({});
+    } else {
+        return res.status(404).send({erro:"Show não encontrado"});
     }
 }
