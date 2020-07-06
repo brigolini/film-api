@@ -66,7 +66,7 @@ exports.getShow = (req, res, next) => {
     } else {
         let show = showlist.filter(show => show.id == id);
         if (show != null) {
-            return res.send(show)
+            return res.send(show[0])
         } else {
             return res.status(404).send({erro: "Show não encontrado"});
         }
