@@ -23,6 +23,7 @@ module.exports = function(app) {
   app.patch('/api/films/:id',requireAuth,Film.patchFilm);
   app.delete('/api/films/:id',requireAuth,Film.deleteFilm);
   app.get('/api/films/',requireAuth,Film.getFilm);
+  app.get('/api/films/:id',requireAuth,Film.getFilm);
 
   app.get('/api/accounts/:id',Accounts.getAccounts);
   app.get('/api/accounts/',Accounts.getAccounts);
